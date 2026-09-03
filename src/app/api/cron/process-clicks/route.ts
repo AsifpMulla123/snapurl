@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { redis } from "@/lib/redis";
 
@@ -43,7 +43,12 @@ async function getGeoData(ip: string | null) {
   }
 }
 
-export async function POST() {
+export async function POST(request: NextRequest) {
+  const authHeader = request.headers.get("authorization");
+  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   const BATCH_SIZE = 50;
   const rawEvents = (await redis.lpop<QueuedClick>(
     "click-queue",

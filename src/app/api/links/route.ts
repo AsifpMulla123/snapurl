@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { customAlphabet } from "nanoid";
 import { prisma } from "@/lib/prisma";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+import { customAlphabet } from "nanoid";
 
 const generateSlug = customAlphabet(
   "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
@@ -8,6 +10,9 @@ const generateSlug = customAlphabet(
 );
 
 export async function POST(request: NextRequest) {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
   const body = await request.json();
   const { originalUrl, customSlug } = body;
 
@@ -35,6 +40,7 @@ export async function POST(request: NextRequest) {
     data: {
       slug,
       originalUrl,
+      userId: session?.user.id,
     },
   });
 

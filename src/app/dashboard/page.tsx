@@ -2,6 +2,7 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import NewLinkForm from "@/components/NewLinkForm";
 
 export default async function DashboardPage() {
   const session = await auth.api.getSession({
@@ -27,6 +28,7 @@ export default async function DashboardPage() {
       <div className="mx-auto max-w-5xl">
         <div className="mb-8 flex items-center justify-between">
           <h1 className="text-2xl font-semibold text-[#191c1e]">Your links</h1>
+          <NewLinkForm />
         </div>
 
         <div className="overflow-hidden rounded-xl border border-[#e0e3e5] bg-white">

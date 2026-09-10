@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import NewLinkForm from "@/components/NewLinkForm";
+import Link from "next/link";
 
 export default async function DashboardPage() {
   const session = await auth.api.getSession({
@@ -51,10 +52,15 @@ export default async function DashboardPage() {
               {links.map((link) => (
                 <tr
                   key={link.id}
-                  className="border-b border-[#e0e3e5] last:border-0"
+                  className="border-b border-[#e0e3e5] last:border-0 hover:bg-[#f7f9fb]"
                 >
-                  <td className="px-6 py-4 font-medium text-[#00685f]">
-                    /{link.slug}
+                  <td className="px-6 py-4">
+                    <Link
+                      href={`/dashboard/${link.slug}`}
+                      className="font-medium text-[#00685f] hover:underline"
+                    >
+                      /{link.slug}
+                    </Link>
                   </td>
                   <td className="max-w-xs truncate px-6 py-4 text-[#43474e]">
                     {link.originalUrl}

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
+import { checkUrlSafety } from "@/lib/url-safety";
 import { customAlphabet } from "nanoid";
 
 const generateSlug = customAlphabet(
@@ -22,7 +23,13 @@ export async function POST(request: NextRequest) {
       { status: 400 },
     );
   }
-
+  const safetyCheck = await checkUrlSafety(originalUrl);
+  if (!safetyCheck.safe) {
+    return NextResponse.json(
+      { error: safetyCheck.reason || "This URL cannot be shortened" },
+      { status: 400 },
+    );
+  }
   const slug = customSlug || generateSlug();
 
   const existingLink = await prisma.link.findUnique({

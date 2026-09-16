@@ -35,22 +35,28 @@ export default function SignupPage() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-linear-to-b from-[#f7f9fb] to-[#eef2f3] px-4">
-      <div className="w-full max-w-md">
-        {/* Logo / brand */}
-        <div className="mb-8 flex flex-col items-center">
+    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#f7f9fb] px-4">
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(0,104,95,0.06), transparent)",
+        }}
+      />
+
+      <div className="relative w-full max-w-md">
+        <Link href="/" className="mb-8 flex flex-col items-center">
           <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-[#00685f]">
             <span className="text-lg font-bold text-white">S</span>
           </div>
-          <h1 className="text-2xl font-semibold text-[#191c1e]">
+          <h1 className="font-heading text-2xl font-medium text-[#191c1e]">
             Create your account
           </h1>
           <p className="mt-1 text-sm text-[#6f797a]">
             Start tracking your links in seconds
           </p>
-        </div>
+        </Link>
 
-        {/* Card */}
         <div className="rounded-2xl border border-[#e0e3e5] bg-white p-8 shadow-sm">
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <div>

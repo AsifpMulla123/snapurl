@@ -8,6 +8,13 @@ import NewLinkForm from "@/components/NewLinkForm";
 import DeleteLinkButton from "@/components/DeleteLinkButton";
 import { Link2 } from "lucide-react";
 
+export const metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
+
 export default async function DashboardPage() {
   const session = await auth.api.getSession({
     headers: await headers(),
@@ -37,7 +44,7 @@ export default async function DashboardPage() {
               <h1 className="font-heading text-2xl font-medium text-[#191c1e]">
                 Your links
               </h1>
-              <p className="mt-1 text-sm text-[#6f797a]">
+              <p className="mt-1 text-sm text-[#5f6a6b]">
                 {links.length} {links.length === 1 ? "link" : "links"} tracked
               </p>
             </div>
@@ -51,7 +58,7 @@ export default async function DashboardPage() {
                   <Link2 className="h-5 w-5 text-[#00685f]" />
                 </div>
                 <p className="font-medium text-[#191c1e]">No links yet</p>
-                <p className="mt-1 max-w-xs text-sm text-[#6f797a]">
+                <p className="mt-1 max-w-xs text-sm text-[#5f6a6b]">
                   Create your first link above to start tracking clicks.
                 </p>
               </div>

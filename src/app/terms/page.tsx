@@ -1,5 +1,9 @@
 import PublicNav from "@/components/PublicNav";
 
+export const metadata = {
+  title: "Terms of Service — SnapURL",
+  description: "SnapURL's terms of service.",
+};
 export default function TermsPage() {
   return (
     <>
@@ -9,7 +13,7 @@ export default function TermsPage() {
           <h1 className="font-heading text-3xl font-medium text-[#191c1e]">
             Terms of Service
           </h1>
-          <p className="mt-2 text-sm text-[#6f797a]">
+          <p className="mt-2 text-sm text-[#5f6a6b]">
             Last updated: September 2026
           </p>
 

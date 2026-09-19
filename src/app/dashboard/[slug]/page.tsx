@@ -8,6 +8,13 @@ import ClicksOverTimeChart from "@/components/ClicksOverTimeChart";
 import BreakdownChart from "@/components/BreakdownChart";
 import { ArrowLeft, TrendingUp, Globe, Smartphone, Link2 } from "lucide-react";
 
+export const metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
+
 export default async function LinkDetailPage({
   params,
 }: {
@@ -107,7 +114,7 @@ export default async function LinkDetailPage({
               Clicks over time
             </div>
             {chartData.length === 0 ? (
-              <p className="text-sm text-[#6f797a]">No clicks yet</p>
+              <p className="text-sm text-[#5f6a6b]">No clicks yet</p>
             ) : (
               <ClicksOverTimeChart data={chartData} />
             )}
@@ -119,7 +126,7 @@ export default async function LinkDetailPage({
               Referrers
             </div>
             {Object.entries(referrerCounts).length === 0 ? (
-              <p className="text-sm text-[#6f797a]">No clicks yet</p>
+              <p className="text-sm text-[#5f6a6b]">No clicks yet</p>
             ) : (
               <ul className="flex flex-col gap-3">
                 {Object.entries(referrerCounts)
@@ -152,7 +159,7 @@ export default async function LinkDetailPage({
                 Top countries
               </div>
               {countryData.length === 0 ? (
-                <p className="text-sm text-[#6f797a]">No clicks yet</p>
+                <p className="text-sm text-[#5f6a6b]">No clicks yet</p>
               ) : (
                 <BreakdownChart data={countryData} />
               )}
@@ -164,7 +171,7 @@ export default async function LinkDetailPage({
                 Devices
               </div>
               {deviceData.length === 0 ? (
-                <p className="text-sm text-[#6f797a]">No clicks yet</p>
+                <p className="text-sm text-[#5f6a6b]">No clicks yet</p>
               ) : (
                 <BreakdownChart data={deviceData} />
               )}

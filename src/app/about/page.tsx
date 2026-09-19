@@ -1,6 +1,10 @@
 import Link from "next/link";
 import PublicNav from "@/components/PublicNav";
 
+export const metadata = {
+  title: "About — SnapURL",
+  description: "Why we built SnapURL and who it's for.",
+};
 export default function AboutPage() {
   return (
     <>

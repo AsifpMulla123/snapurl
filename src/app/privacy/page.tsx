@@ -1,5 +1,10 @@
 import PublicNav from "@/components/PublicNav";
 
+export const metadata = {
+  title: "Privacy Policy — SnapURL",
+  description: "How SnapURL collects, uses, and protects your data.",
+};
+
 export default function PrivacyPage() {
   return (
     <>
@@ -9,7 +14,7 @@ export default function PrivacyPage() {
           <h1 className="font-heading text-3xl font-medium text-[#191c1e]">
             Privacy Policy
           </h1>
-          <p className="mt-2 text-sm text-[#6f797a]">
+          <p className="mt-2 text-sm text-[#5f6a6b]">
             Last updated: September 2026
           </p>
 

@@ -16,7 +16,7 @@ export default function DashboardNav() {
   return (
     <nav className="border-b border-[#e0e3e5] bg-white px-6 py-4">
       <div className="mx-auto flex max-w-5xl items-center justify-between">
-        <Link href="/dashboard" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#00685f]">
             <span className="text-sm font-bold text-white">S</span>
           </div>

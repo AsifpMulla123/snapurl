@@ -82,3 +82,10 @@ body {
   animation: check-pop 3s ease-out infinite;
   animation-delay: 0.8s;
 }
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid #00685f;
+  outline-offset: 2px;
+}
